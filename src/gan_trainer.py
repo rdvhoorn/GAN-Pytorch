@@ -16,8 +16,10 @@ class GANTrainer:
     This class implements and aggregates all the functionalities needed to train a generative adversarial network.
 
     There are 4 important functions:
-    train:              trains the generative adversarial net for a given number of epochs.
-    train_generator:    A function that trains the generator for one batch of data.
+    train:                  A function to train the GAN for a given number of epochs.
+    train_generator:        A function that trains the generator for one batch of data.
+    train_discriminator:    A function that trains the discriminator for one batch of data.
+    generate_n_samples:     A function to generate n fake samples.
     """
 
     def __init__(
