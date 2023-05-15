@@ -1,6 +1,14 @@
 import torch
 from torch import Tensor
 
+from enum import Enum
+
+
+class GANType(Enum):
+    GAN = 0
+    WGAN = 1
+    WGAN_GP = 2
+
 
 def generate_2d_normal_prior(batch_size: int, prior_size: int) -> Tensor:
     """
