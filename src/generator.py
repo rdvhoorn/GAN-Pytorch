@@ -1,4 +1,3 @@
-import torch
 from torch import nn, Tensor
 from torch.nn import Module, Sequential
 
@@ -15,7 +14,7 @@ class Generator(Module):
             input_size: int,
             output_size: int,
             dropout: float = 0.0,
-            leaky_relu_slope: float = 0.2,
+            leaky_relu_slope: float = 0.1,
     ):
         """
         The initialization function for the generator.

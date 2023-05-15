@@ -19,7 +19,7 @@ class Discriminator(Module):
             self,
             input_size: int,
             dropout: float = 0.2,
-            leaky_relu_slope: float = 0.2,
+            leaky_relu_slope: float = 0.1,
             discriminator_type: GANType = GANType.GAN
     ):
         """

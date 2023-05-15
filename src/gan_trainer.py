@@ -7,7 +7,7 @@ from torch.optim import Optimizer
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from utils import generate_2d_normal_prior
+from src.utils import generate_2d_normal_prior
 from settings import TQDM_BAR_FORMAT, LOGGER
 
 
@@ -202,12 +202,12 @@ class GANTrainer:
         :param number_of_samples:   The number of samples to generate.
         :return:                    The generated samples.
         """
+        with torch.no_grad():
+            # Generate prior
+            prior: Tensor = self.prior_generation_function(number_of_samples, self.prior_size).to(self.device)
 
-        # Generate prior
-        prior: Tensor = self.prior_generation_function(number_of_samples, self.prior_size).to(self.device)
-
-        # Generate samples
-        generator_output = self.generator(prior)
+            # Generate samples
+            generator_output = self.generator(prior)
 
         # Return samples
         return generator_output
