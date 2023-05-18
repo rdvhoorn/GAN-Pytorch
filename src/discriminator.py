@@ -19,7 +19,7 @@ class Discriminator(Module):
             self,
             input_size: int,
             dropout: float = 0.2,
-            leaky_relu_slope: float = 0.1,
+            leaky_relu_slope: float = 0.2,
             discriminator_type: GANType = GANType.GAN
     ):
         """
@@ -37,19 +37,15 @@ class Discriminator(Module):
 
         # Initialize the sequential multi-layer perceptron model using the given parameters.
         self.sequential_model = Sequential(
-            nn.Linear(in_features=input_size, out_features=1024),
+            nn.Linear(in_features=input_size, out_features=128),
             nn.Dropout(p=dropout, inplace=True),
             nn.LeakyReLU(negative_slope=leaky_relu_slope, inplace=True),
 
-            nn.Linear(in_features=1024, out_features=512),
+            nn.Linear(in_features=128, out_features=128),
             nn.Dropout(p=dropout, inplace=True),
             nn.LeakyReLU(negative_slope=leaky_relu_slope, inplace=True),
 
-            nn.Linear(in_features=512, out_features=256),
-            nn.Dropout(p=dropout, inplace=True),
-            nn.LeakyReLU(negative_slope=leaky_relu_slope, inplace=True),
-
-            nn.Linear(in_features=256, out_features=1)
+            nn.Linear(in_features=128, out_features=1)
         )
 
     def forward(self, batch: Tensor) -> Tensor:
