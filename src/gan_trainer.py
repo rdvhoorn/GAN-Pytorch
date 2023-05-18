@@ -1,4 +1,5 @@
 from typing import Callable, List, Iterator
+import logging
 
 import torch
 from torch import Tensor
@@ -8,7 +9,13 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 from src.utils import generate_2d_normal_prior
-from settings import TQDM_BAR_FORMAT, LOGGER
+
+# TQDM_BAR_FORMAT helps to format the logging during the GAN training process.
+TQDM_BAR_FORMAT = '[{elapsed}<{remaining},{rate_fmt}{postfix}]{percentage:3.0f}%|{bar:10}{desc}'
+
+# Configure a logger without too much unnecessary information.
+logging.basicConfig(format='%(levelname)-8s [%(filename)s:%(lineno)d] %(message)s', datefmt='%Y-%m-%d:%H:%M:%S', level=logging.INFO)
+LOGGER = logging.getLogger()
 
 
 class GANTrainer:
