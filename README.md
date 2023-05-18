@@ -11,3 +11,5 @@ The implementation features the most basic approach to a GAN, using multi-layer 
 on the MNIST numbers dataset still show respectable quality:
 
 ![Results from basic training (GAN src example)](https://github.com/rdvhoorn/GAN-Understandable-AI/blob/main/images/results_plot.png)
+
+Please use anything within this repository freely. Mentions are appreciated. In addition, you can contribute by opening pull-requests with improvements. 
